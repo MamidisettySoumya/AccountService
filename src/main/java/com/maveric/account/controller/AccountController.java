@@ -64,5 +64,13 @@ public class AccountController {
         }
 
     }
+    //getAccountDetails
+    @GetMapping("customers/{customerId}/accounts/{accountId}")
+    public ResponseEntity<Account> getAccountDetails(@PathVariable String customerId,@PathVariable String accountId) {
+
+        Account accountDtoResponse = accountservice.getAccountDetailsById(customerId, accountId);
+        return new ResponseEntity<>(accountDtoResponse, HttpStatus.OK);
+
+    }
 
 }

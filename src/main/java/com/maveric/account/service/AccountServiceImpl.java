@@ -32,7 +32,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account getAccountDetailsById(String customerId, String accountId) {
-        return null;
+        Account accountResponse=accountrepository.findAccountByCustomerId(customerId,accountId);
+
+        return accountResponse;
     }
 
     @Override
