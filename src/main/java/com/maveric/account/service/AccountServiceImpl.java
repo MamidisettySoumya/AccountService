@@ -24,7 +24,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<Account> getAccounts(String customerId) {
-        return null;
+        List<Account> accountResponse = accountrepository.findBycustomerId(customerId);
+
+        return accountResponse;
+
     }
 
     @Override

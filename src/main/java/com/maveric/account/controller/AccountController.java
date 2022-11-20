@@ -50,4 +50,19 @@ public class AccountController {
         }
     }
 
+    //getAccounts
+    @GetMapping("/customers/{customerId}/accounts")
+    public ResponseEntity<List<Account>> getAccounts(@PathVariable String customerId,
+                                                     @RequestBody Account account) {
+
+        if(customerId.equals(account.getCustomerId())){
+            List<Account> accountDtoResponse = accountservice.getAccounts(customerId);
+            return new ResponseEntity<>(accountDtoResponse, HttpStatus.OK);
+        }
+        else{
+            throw new CustomerException("customer id should be same in request body and url");
+        }
+
+    }
+
 }
