@@ -33,4 +33,21 @@ public class AccountController {
 
     }
 
+    //deleteAccount
+    @DeleteMapping("customers/{customerId}/accounts/{accountId}")
+    public ResponseEntity<String> deleteAccount(@PathVariable String customerId,
+                                                @PathVariable String accountId) {
+
+        String result = accountservice.deleteAccount(accountId);
+        //delete balance and transaction details
+        if(result!=null) {
+
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(accountId+"AccountIdNotFound", HttpStatus.NOT_FOUND);
+
+        }
+    }
+
 }

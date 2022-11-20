@@ -34,7 +34,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public String deleteAccount(String accountId) {
-        return null;
+        if(!accountrepository.findById(accountId).isPresent())
+        {
+            throw new AccountNotFoundException("Account not found for Id-"+accountId);
+        }
+        accountrepository.deleteById(accountId);
+        return "Account deleted successfully";
     }
 
 }
